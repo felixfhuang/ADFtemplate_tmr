@@ -1,0 +1,13 @@
+{
+	"name": "SqlTable_TripInsert",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azsqlReportingDBconn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
