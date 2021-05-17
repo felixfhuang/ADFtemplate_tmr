@@ -129,22 +129,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/dsStringMap')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -159,6 +143,22 @@
 				"typeProperties": {
 					"entityName": "stringmap"
 				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dsURL')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
 			},
 			"dependsOn": []
 		},
@@ -392,7 +392,7 @@
 								"partitionOption": "None"
 							},
 							"dataset": {
-								"referenceName": "dsPageList",
+								"referenceName": "dsURL",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -430,7 +430,7 @@
 				"lastPublishTime": "2020-08-04T06:20:23Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/dsPageList')]"
+				"[concat(variables('factoryId'), '/datasets/dsURL')]"
 			]
 		},
 		{

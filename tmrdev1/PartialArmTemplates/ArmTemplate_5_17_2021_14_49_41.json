@@ -6,70 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "tmrdev1"
-		},
-		"AzureFileStorage1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'AzureFileStorage1'"
-		},
-		"Dynamics1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'Dynamics1'"
-		},
-		"azsqlReportingDBconn_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'azsqlReportingDBconn'"
-		},
-		"lksCabChargeBlobStorage_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'lksCabChargeBlobStorage'"
-		},
-		"lksCabChargeFileStorage_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'lksCabChargeFileStorage'"
-		},
-		"lksTmrFileStorage_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'lksTmrFileStorage'"
-		},
-		"AzureFileStorage1_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"AzureFileStorage1_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Azure\\tmrdevstorage"
-		},
-		"Dynamics1_properties_typeProperties_username": {
-			"type": "string",
-			"defaultValue": "qldtmr_support@qldtmr.onmicrosoft.com"
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Azure\\tmrdevstorage"
-		},
-		"lksTmrD365_properties_typeProperties_username": {
-			"type": "string",
-			"defaultValue": "tss_svc@qldtmr.onmicrosoft.com"
-		},
-		"lksTmrFileStorage_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"lksTmrFileStorage_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Azure\\tmrdevstorage"
-		},
-		"tmrKeydev_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://tmr-key.vault.azure.net/"
-		},
-		"tmrwebapi_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://tmrcrm-dev.azurewebsites.net"
 		}
 	},
 	"variables": {
@@ -157,8 +93,7 @@
 							},
 							"dataset": {
 								"referenceName": "dsURL",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					}
@@ -304,8 +239,7 @@
 										},
 										"dataset": {
 											"referenceName": "dsFileToProcess",
-											"type": "DatasetReference",
-											"parameters": {}
+											"type": "DatasetReference"
 										}
 									}
 								},
@@ -794,8 +728,7 @@
 									"outputs": [
 										{
 											"referenceName": "AzureSqlTable1",
-											"type": "DatasetReference",
-											"parameters": {}
+											"type": "DatasetReference"
 										}
 									]
 								},
@@ -1055,7 +988,6 @@
 				"[concat(variables('factoryId'), '/datasets/BinaryDataDestination')]",
 				"[concat(variables('factoryId'), '/pipelines/PL Send Email Notification')]",
 				"[concat(variables('factoryId'), '/datasets/dsFileToProcess')]",
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]",
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File')]",
 				"[concat(variables('factoryId'), '/datasets/loadtestfile')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
@@ -1078,9 +1010,7 @@
 					"table": "ApplicationImage"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Application_Images')]",
@@ -1132,9 +1062,7 @@
 					"table": "template_loadtest"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
@@ -1173,9 +1101,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeBlobStorage')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_File')]",
@@ -1218,9 +1144,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeBlobStorage')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder')]",
@@ -1256,9 +1180,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeBlobStorage')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryFieSource_File')]",
@@ -1416,8 +1338,7 @@
 				},
 				"annotations": [],
 				"type": "DynamicsEntity",
-				"schema": [],
-				"typeProperties": {}
+				"schema": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/lksTmrD365')]"
@@ -1454,12 +1375,9 @@
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
+				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/XMLFiles')]",
@@ -1499,12 +1417,9 @@
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
+				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/dsStringMap')]",
@@ -1537,12 +1452,9 @@
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
+				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/loadtestfile')]",
@@ -1589,9 +1501,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeBlobStorage')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/sqlApplicationImage')]",
@@ -1636,9 +1546,7 @@
 					"table": "ApplicationImages"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/sqlMemberImages')]",
@@ -1688,9 +1596,7 @@
 					"table": "MemberImages"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/sqlStringMap')]",
@@ -1745,9 +1651,7 @@
 					"table": "StringMap"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/tripinsertresponse')]",
@@ -1777,11 +1681,11 @@
 				"annotations": [],
 				"type": "AzureFileStorage",
 				"typeProperties": {
-					"host": "[parameters('AzureFileStorage1_properties_typeProperties_host')]",
-					"userId": "[parameters('AzureFileStorage1_properties_typeProperties_userId')]",
+					"host": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge",
+					"userId": "Azure\\tmrdevstorage",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('AzureFileStorage1_password')]"
+						"value": "**********"
 					}
 				}
 			},
@@ -1798,48 +1702,11 @@
 					"deploymentType": "Online",
 					"serviceUri": "https://tmrdev1.crm6.dynamics.com",
 					"authenticationType": "Office365",
-					"username": "[parameters('Dynamics1_properties_typeProperties_username')]",
+					"username": "qldtmr_support@qldtmr.onmicrosoft.com",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('Dynamics1_password')]"
+						"value": "**********"
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/azsqlReportingDBconn')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('azsqlReportingDBconn_connectionString')]",
-					"password": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "tmrKeydev",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "adfuser",
-						"secretVersion": ""
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/tmrKeydev')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/lksCabChargeBlobStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('lksCabChargeBlobStorage_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -1852,11 +1719,11 @@
 				"annotations": [],
 				"type": "AzureFileStorage",
 				"typeProperties": {
-					"host": "[parameters('lksCabChargeFileStorage_properties_typeProperties_host')]",
-					"userId": "[parameters('lksCabChargeFileStorage_properties_typeProperties_userId')]",
+					"host": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge",
+					"userId": "Azure\\tmrdevstorage",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('lksCabChargeFileStorage_password')]"
+						"value": "**********"
 					}
 				}
 			},
@@ -1873,7 +1740,7 @@
 					"deploymentType": "Online",
 					"serviceUri": "https://tmrdev1.crm6.dynamics.com",
 					"authenticationType": "Office365",
-					"username": "[parameters('lksTmrD365_properties_typeProperties_username')]",
+					"username": "tss_svc@qldtmr.onmicrosoft.com",
 					"password": {
 						"type": "AzureKeyVaultSecret",
 						"store": {
@@ -1896,11 +1763,11 @@
 				"annotations": [],
 				"type": "AzureFileStorage",
 				"typeProperties": {
-					"host": "[parameters('lksTmrFileStorage_properties_typeProperties_host')]",
-					"userId": "[parameters('lksTmrFileStorage_properties_typeProperties_userId')]",
+					"host": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge",
+					"userId": "Azure\\tmrdevstorage",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('lksTmrFileStorage_password')]"
+						"value": "**********"
 					}
 				}
 			},
@@ -1914,7 +1781,7 @@
 				"annotations": [],
 				"type": "AzureKeyVault",
 				"typeProperties": {
-					"baseUrl": "[parameters('tmrKeydev_properties_typeProperties_baseUrl')]"
+					"baseUrl": "https://tmr-key.vault.azure.net/"
 				}
 			},
 			"dependsOn": []
@@ -1927,7 +1794,7 @@
 				"annotations": [],
 				"type": "RestService",
 				"typeProperties": {
-					"url": "[parameters('tmrwebapi_properties_typeProperties_url')]",
+					"url": "https://tmrcrm-dev.azurewebsites.net",
 					"enableServerCertificateValidation": false,
 					"authenticationType": "Anonymous"
 				}
