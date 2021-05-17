@@ -79,6 +79,22 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/dsStringMap')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -208,61 +224,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/sqlStringMap')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "attributevalue",
-						"type": "nvarchar"
-					},
-					{
-						"name": "displayorder",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "versionnumber",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "attributename",
-						"type": "nvarchar"
-					},
-					{
-						"name": "value",
-						"type": "nvarchar"
-					},
-					{
-						"name": "objecttypecode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "langid",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "organizationid",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "StringMap"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/PL Send Email Notification')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -377,7 +338,7 @@
 					}
 				},
 				"annotations": [],
-				"lastPublishTime": "2020-08-04T06:20:23Z"
+				"lastPublishTime": "2021-05-17T04:49:43Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/dsURL')]"
@@ -1233,7 +1194,7 @@
 					}
 				},
 				"annotations": [],
-				"lastPublishTime": "2020-08-07T01:37:41Z"
+				"lastPublishTime": "2021-05-17T04:49:44Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/PL Send Email Notification')]",
