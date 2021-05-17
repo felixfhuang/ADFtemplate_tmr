@@ -7,14 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "tmrdev1"
 		},
-		"AzureFileStorage1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'AzureFileStorage1'"
-		},
-		"Dynamics1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'Dynamics1'"
-		},
 		"azsqlReportingDBconn_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'azsqlReportingDBconn'"
@@ -30,18 +22,6 @@
 		"lksTmrFileStorage_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'lksTmrFileStorage'"
-		},
-		"AzureFileStorage1_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"AzureFileStorage1_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Azure\\tmrdevstorage"
-		},
-		"Dynamics1_properties_typeProperties_username": {
-			"type": "string",
-			"defaultValue": "qldtmr_support@qldtmr.onmicrosoft.com"
 		},
 		"lksCabChargeFileStorage_properties_typeProperties_host": {
 			"type": "string",
@@ -1768,44 +1748,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/tmrwebapi')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureFileStorage1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFileStorage",
-				"typeProperties": {
-					"host": "[parameters('AzureFileStorage1_properties_typeProperties_host')]",
-					"userId": "[parameters('AzureFileStorage1_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFileStorage1_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Dynamics1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Dynamics",
-				"typeProperties": {
-					"deploymentType": "Online",
-					"serviceUri": "https://tmrdev1.crm6.dynamics.com",
-					"authenticationType": "Office365",
-					"username": "[parameters('Dynamics1_properties_typeProperties_username')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('Dynamics1_password')]"
-					}
-				}
-			},
-			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/azsqlReportingDBconn')]",

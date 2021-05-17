@@ -7,14 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "tmrdev1"
 		},
-		"AzureFileStorage1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'AzureFileStorage1'"
-		},
-		"Dynamics1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'Dynamics1'"
-		},
 		"azsqlReportingDBconn_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'azsqlReportingDBconn'"
@@ -30,18 +22,6 @@
 		"lksTmrFileStorage_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'lksTmrFileStorage'"
-		},
-		"AzureFileStorage1_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"AzureFileStorage1_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Azure\\tmrdevstorage"
-		},
-		"Dynamics1_properties_typeProperties_username": {
-			"type": "string",
-			"defaultValue": "qldtmr_support@qldtmr.onmicrosoft.com"
 		},
 		"lksCabChargeFileStorage_properties_typeProperties_host": {
 			"type": "string",
@@ -98,12 +78,6 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureFileStorage1_password": {
-						"value": "[parameters('AzureFileStorage1_password')]"
-					},
-					"Dynamics1_password": {
-						"value": "[parameters('Dynamics1_password')]"
-					},
 					"lksCabChargeBlobStorage_connectionString": {
 						"value": "[parameters('lksCabChargeBlobStorage_connectionString')]"
 					},
@@ -115,15 +89,6 @@
 					},
 					"azsqlReportingDBconn_connectionString": {
 						"value": "[parameters('azsqlReportingDBconn_connectionString')]"
-					},
-					"AzureFileStorage1_properties_typeProperties_host": {
-						"value": "[parameters('AzureFileStorage1_properties_typeProperties_host')]"
-					},
-					"AzureFileStorage1_properties_typeProperties_userId": {
-						"value": "[parameters('AzureFileStorage1_properties_typeProperties_userId')]"
-					},
-					"Dynamics1_properties_typeProperties_username": {
-						"value": "[parameters('Dynamics1_properties_typeProperties_username')]"
 					},
 					"lksCabChargeFileStorage_properties_typeProperties_host": {
 						"value": "[parameters('lksCabChargeFileStorage_properties_typeProperties_host')]"

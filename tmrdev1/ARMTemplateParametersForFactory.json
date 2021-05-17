@@ -5,12 +5,6 @@
 		"factoryName": {
 			"value": "tmrdev1"
 		},
-		"AzureFileStorage1_password": {
-			"value": ""
-		},
-		"Dynamics1_password": {
-			"value": ""
-		},
 		"azsqlReportingDBconn_connectionString": {
 			"value": ""
 		},
@@ -22,15 +16,6 @@
 		},
 		"lksTmrFileStorage_password": {
 			"value": ""
-		},
-		"AzureFileStorage1_properties_typeProperties_host": {
-			"value": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"AzureFileStorage1_properties_typeProperties_userId": {
-			"value": "Azure\\tmrdevstorage"
-		},
-		"Dynamics1_properties_typeProperties_username": {
-			"value": "qldtmr_support@qldtmr.onmicrosoft.com"
 		},
 		"lksCabChargeFileStorage_properties_typeProperties_host": {
 			"value": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
