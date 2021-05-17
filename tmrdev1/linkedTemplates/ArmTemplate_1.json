@@ -13,38 +13,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/dsFileToProcess')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/dsURL')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -57,101 +25,6 @@
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/sqlApplicationImage')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "qra_applicationid",
-						"type": "uniqueidentifier"
-					},
-					{
-						"name": "qra_crn",
-						"type": "nvarchar"
-					},
-					{
-						"name": "entityimage",
-						"type": "image"
-					},
-					{
-						"name": "entityimageid",
-						"type": "uniqueidentifier"
-					},
-					{
-						"name": "entityimage_timestamp",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "entityimage_url",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "ApplicationImages"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/sqlMemberImages')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "MemBerImageID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "qra_memberid",
-						"type": "uniqueidentifier"
-					},
-					{
-						"name": "qra_crn",
-						"type": "nvarchar"
-					},
-					{
-						"name": "entityimage",
-						"type": "image"
-					},
-					{
-						"name": "entityimageid",
-						"type": "uniqueidentifier"
-					},
-					{
-						"name": "entityimage_timestamp",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "entityimage_url",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "MemberImages"
-				}
 			},
 			"dependsOn": []
 		},
@@ -1129,8 +1002,7 @@
 				"lastPublishTime": "2021-05-17T04:49:44Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL Send Email Notification')]",
-				"[concat(variables('factoryId'), '/datasets/dsFileToProcess')]"
+				"[concat(variables('factoryId'), '/pipelines/PL Send Email Notification')]"
 			]
 		}
 	]

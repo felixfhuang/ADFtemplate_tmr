@@ -507,26 +507,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/tripinsertresponse')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "tmrwebapi",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {
-					"relativeUrl": "/api/trips/v1.0/import"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/tmrwebapi')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/azsqlReportingDBconn')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -611,7 +591,25 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SqlTable_TripInsert')]",
+			"name": "[concat(parameters('factoryName'), '/dsFileToProcess')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
