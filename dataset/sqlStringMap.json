@@ -1,0 +1,53 @@
+{
+	"name": "sqlStringMap",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azsqlReportingDBconn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "attributevalue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "displayorder",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "versionnumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "attributename",
+				"type": "nvarchar"
+			},
+			{
+				"name": "value",
+				"type": "nvarchar"
+			},
+			{
+				"name": "objecttypecode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "langid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "organizationid",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "StringMap"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

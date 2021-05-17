@@ -1,0 +1,30 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azsqlReportingDBconn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "A",
+				"type": "varchar"
+			},
+			{
+				"name": "B",
+				"type": "varchar"
+			},
+			{
+				"name": "C",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "template_loadtest"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

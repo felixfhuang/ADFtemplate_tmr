@@ -1,0 +1,9 @@
+{
+	"name": "tmrdev1",
+	"location": "australiaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e5c12d5c-84f1-41fa-aa4b-18bd3aaf6607",
+		"tenantId": "9c5c3150-dad7-45ac-a8b8-892a48cff618"
+	}
+}

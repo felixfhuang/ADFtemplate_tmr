@@ -1,0 +1,45 @@
+{
+	"name": "loadtestfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lksCabChargeBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filecontainer": {
+				"type": "string"
+			},
+			"filedir": {
+				"type": "string"
+			},
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().filedir",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().filecontainer",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

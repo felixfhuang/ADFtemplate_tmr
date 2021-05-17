@@ -1,0 +1,48 @@
+{
+	"name": "sqlMemberImages",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azsqlReportingDBconn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "MemBerImageID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "qra_memberid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "qra_crn",
+				"type": "nvarchar"
+			},
+			{
+				"name": "entityimage",
+				"type": "image"
+			},
+			{
+				"name": "entityimageid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "entityimage_timestamp",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "entityimage_url",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "MemberImages"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

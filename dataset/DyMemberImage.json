@@ -1,0 +1,13 @@
+{
+	"name": "DyMemberImage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lksTmrD365",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

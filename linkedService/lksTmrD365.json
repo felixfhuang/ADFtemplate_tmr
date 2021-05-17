@@ -1,0 +1,22 @@
+{
+	"name": "lksTmrD365",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Dynamics",
+		"typeProperties": {
+			"deploymentType": "Online",
+			"serviceUri": "https://tmrdev1.crm6.dynamics.com",
+			"authenticationType": "Office365",
+			"username": "tss_svc@qldtmr.onmicrosoft.com",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "tmrKeydev",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "adfd365user"
+			}
+		}
+	}
+}

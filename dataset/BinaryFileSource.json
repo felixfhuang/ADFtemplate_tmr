@@ -1,0 +1,27 @@
+{
+	"name": "BinaryFileSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lksTmrFileStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FileDirectory": {
+				"type": "string",
+				"defaultValue": "cardupdate"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureFileStorageLocation",
+				"folderPath": {
+					"value": "@dataset().FileDirectory",
+					"type": "Expression"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
