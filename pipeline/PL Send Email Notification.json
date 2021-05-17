@@ -76,7 +76,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "dsPageList",
+						"referenceName": "dsURL",
 						"type": "DatasetReference"
 					}
 				}

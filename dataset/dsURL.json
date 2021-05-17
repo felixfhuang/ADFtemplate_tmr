@@ -1,5 +1,5 @@
 {
-	"name": "dsPageList",
+	"name": "dsURL",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "azsqlReportingDBconn",
