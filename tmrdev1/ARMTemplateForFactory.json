@@ -1345,33 +1345,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/XMLFiles')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "lksTmrFileStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureFileStorageLocation",
-						"fileName": "TSS_smartcard_update_20200121_5332.xml",
-						"folderPath": "cardupdate"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/lksTmrFileStorage')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/dsFileToProcess')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
