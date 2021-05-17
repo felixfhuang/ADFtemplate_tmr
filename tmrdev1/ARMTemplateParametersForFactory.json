@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "tmrdev1"
+		},
+		"AzureFileStorage1_password": {
+			"value": ""
+		},
+		"Dynamics1_password": {
+			"value": ""
+		},
+		"azsqlReportingDBconn_connectionString": {
+			"value": ""
+		},
+		"lksCabChargeBlobStorage_connectionString": {
+			"value": ""
+		},
+		"lksCabChargeFileStorage_password": {
+			"value": ""
+		},
+		"lksTmrFileStorage_password": {
+			"value": ""
+		},
+		"AzureFileStorage1_properties_typeProperties_host": {
+			"value": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
+		},
+		"AzureFileStorage1_properties_typeProperties_userId": {
+			"value": "Azure\\tmrdevstorage"
+		},
+		"Dynamics1_properties_typeProperties_username": {
+			"value": "qldtmr_support@qldtmr.onmicrosoft.com"
+		},
+		"lksCabChargeFileStorage_properties_typeProperties_host": {
+			"value": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
+		},
+		"lksCabChargeFileStorage_properties_typeProperties_userId": {
+			"value": "Azure\\tmrdevstorage"
+		},
+		"lksTmrD365_properties_typeProperties_username": {
+			"value": "tss_svc@qldtmr.onmicrosoft.com"
+		},
+		"lksTmrFileStorage_properties_typeProperties_host": {
+			"value": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
+		},
+		"lksTmrFileStorage_properties_typeProperties_userId": {
+			"value": "Azure\\tmrdevstorage"
+		},
+		"tmrKeydev_properties_typeProperties_baseUrl": {
+			"value": "https://tmr-key.vault.azure.net/"
+		},
+		"tmrwebapi_properties_typeProperties_url": {
+			"value": "https://tmrcrm-dev.azurewebsites.net"
+		}
+	}
+}

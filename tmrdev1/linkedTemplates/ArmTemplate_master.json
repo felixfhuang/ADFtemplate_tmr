@@ -1,0 +1,174 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "tmrdev1"
+		},
+		"AzureFileStorage1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureFileStorage1'"
+		},
+		"Dynamics1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Dynamics1'"
+		},
+		"azsqlReportingDBconn_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'azsqlReportingDBconn'"
+		},
+		"lksCabChargeBlobStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'lksCabChargeBlobStorage'"
+		},
+		"lksCabChargeFileStorage_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'lksCabChargeFileStorage'"
+		},
+		"lksTmrFileStorage_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'lksTmrFileStorage'"
+		},
+		"AzureFileStorage1_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
+		},
+		"AzureFileStorage1_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "Azure\\tmrdevstorage"
+		},
+		"Dynamics1_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "qldtmr_support@qldtmr.onmicrosoft.com"
+		},
+		"lksCabChargeFileStorage_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
+		},
+		"lksCabChargeFileStorage_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "Azure\\tmrdevstorage"
+		},
+		"lksTmrD365_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "tss_svc@qldtmr.onmicrosoft.com"
+		},
+		"lksTmrFileStorage_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
+		},
+		"lksTmrFileStorage_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "Azure\\tmrdevstorage"
+		},
+		"tmrKeydev_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://tmr-key.vault.azure.net/"
+		},
+		"tmrwebapi_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://tmrcrm-dev.azurewebsites.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "tmrdev1_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureFileStorage1_password": {
+						"value": "[parameters('AzureFileStorage1_password')]"
+					},
+					"Dynamics1_password": {
+						"value": "[parameters('Dynamics1_password')]"
+					},
+					"lksCabChargeBlobStorage_connectionString": {
+						"value": "[parameters('lksCabChargeBlobStorage_connectionString')]"
+					},
+					"lksCabChargeFileStorage_password": {
+						"value": "[parameters('lksCabChargeFileStorage_password')]"
+					},
+					"lksTmrFileStorage_password": {
+						"value": "[parameters('lksTmrFileStorage_password')]"
+					},
+					"azsqlReportingDBconn_connectionString": {
+						"value": "[parameters('azsqlReportingDBconn_connectionString')]"
+					},
+					"AzureFileStorage1_properties_typeProperties_host": {
+						"value": "[parameters('AzureFileStorage1_properties_typeProperties_host')]"
+					},
+					"AzureFileStorage1_properties_typeProperties_userId": {
+						"value": "[parameters('AzureFileStorage1_properties_typeProperties_userId')]"
+					},
+					"Dynamics1_properties_typeProperties_username": {
+						"value": "[parameters('Dynamics1_properties_typeProperties_username')]"
+					},
+					"lksCabChargeFileStorage_properties_typeProperties_host": {
+						"value": "[parameters('lksCabChargeFileStorage_properties_typeProperties_host')]"
+					},
+					"lksCabChargeFileStorage_properties_typeProperties_userId": {
+						"value": "[parameters('lksCabChargeFileStorage_properties_typeProperties_userId')]"
+					},
+					"lksTmrFileStorage_properties_typeProperties_host": {
+						"value": "[parameters('lksTmrFileStorage_properties_typeProperties_host')]"
+					},
+					"lksTmrFileStorage_properties_typeProperties_userId": {
+						"value": "[parameters('lksTmrFileStorage_properties_typeProperties_userId')]"
+					},
+					"tmrKeydev_properties_typeProperties_baseUrl": {
+						"value": "[parameters('tmrKeydev_properties_typeProperties_baseUrl')]"
+					},
+					"tmrwebapi_properties_typeProperties_url": {
+						"value": "[parameters('tmrwebapi_properties_typeProperties_url')]"
+					},
+					"lksTmrD365_properties_typeProperties_username": {
+						"value": "[parameters('lksTmrD365_properties_typeProperties_username')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "tmrdev1_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'tmrdev1_ArmTemplate_0')]"
+			]
+		}
+	]
+}
