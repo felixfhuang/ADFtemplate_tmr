@@ -311,9 +311,16 @@
 									"typeProperties": {
 										"storedProcedureName": "dbo.template_fileprocessing",
 										"storedProcedureParameters": {
+											"IsValid": {
+												"value": {
+													"value": "@variables('v_IsValid')",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
 											"ProcessKey": {
 												"value": {
-													"value": "@string(variables('ProcessKey'))",
+													"value": "@variables('ProcessKey')",
 													"type": "Expression"
 												},
 												"type": "Int32"
@@ -994,6 +1001,9 @@
 						"type": "String"
 					},
 					"FileDir": {
+						"type": "String"
+					},
+					"v_IsValid": {
 						"type": "String"
 					}
 				},
