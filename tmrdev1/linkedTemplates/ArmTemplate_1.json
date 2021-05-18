@@ -177,7 +177,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "BinaryDataSource_Folder",
+								"referenceName": "ds_loadingfolder_folder",
 								"type": "DatasetReference",
 								"parameters": {
 									"Container": {
@@ -460,7 +460,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "ds_loadingfolder",
+											"referenceName": "ds_loadingfolder_file",
 											"type": "DatasetReference",
 											"parameters": {
 												"Container": {
@@ -913,7 +913,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "ds_loadingfolder",
+								"referenceName": "ds_loadingfolder_file",
 								"type": "DatasetReference",
 								"parameters": {
 									"Container": {
@@ -1027,7 +1027,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "BinaryDataSource_Folder",
+								"referenceName": "ds_loadingfolder_folder",
 								"type": "DatasetReference",
 								"parameters": {
 									"Container": {
@@ -1310,7 +1310,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "ds_loadingfolder",
+											"referenceName": "ds_loadingfolder_file",
 											"type": "DatasetReference",
 											"parameters": {
 												"Container": {
@@ -1769,7 +1769,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "ds_loadingfolder",
+								"referenceName": "ds_loadingfolder_file",
 								"type": "DatasetReference",
 								"parameters": {
 									"Container": {
