@@ -306,7 +306,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "BinaryDataDestination",
+									"referenceName": "ds_loadingfolder",
 									"type": "DatasetReference",
 									"parameters": {
 										"Container": {
@@ -746,7 +746,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "BinaryFileSource",
+						"referenceName": "ds_source_fileshare",
 						"type": "DatasetReference",
 						"parameters": {
 							"FileDirectory": {
@@ -758,7 +758,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "BinaryDataDestination",
+						"referenceName": "ds_loadingfolder",
 						"type": "DatasetReference",
 						"parameters": {
 							"Container": {

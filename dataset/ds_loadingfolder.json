@@ -1,5 +1,5 @@
 {
-	"name": "BinaryDataDestination",
+	"name": "ds_loadingfolder",
 	"properties": {
 		"description": "It describes the destination store.",
 		"linkedServiceName": {

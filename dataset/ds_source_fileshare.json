@@ -1,5 +1,5 @@
 {
-	"name": "BinaryFileSource",
+	"name": "ds_source_fileshare",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "lksTmrFileStorage",
