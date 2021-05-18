@@ -11,20 +11,8 @@
 		"lksCabChargeBlobStorage_connectionString": {
 			"value": ""
 		},
-		"lksCabChargeFileStorage_password": {
-			"value": ""
-		},
 		"lksTmrFileStorage_password": {
 			"value": ""
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_host": {
-			"value": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_userId": {
-			"value": "Azure\\tmrdevstorage"
-		},
-		"lksTmrD365_properties_typeProperties_username": {
-			"value": "tss_svc@qldtmr.onmicrosoft.com"
 		},
 		"lksTmrFileStorage_properties_typeProperties_host": {
 			"value": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
@@ -34,9 +22,6 @@
 		},
 		"tmrKeydev_properties_typeProperties_baseUrl": {
 			"value": "https://tmr-key.vault.azure.net/"
-		},
-		"tmrwebapi_properties_typeProperties_url": {
-			"value": "https://tmrcrm-dev.azurewebsites.net"
 		},
 		"containerUri": {
 			"value": ""

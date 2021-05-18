@@ -15,25 +15,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lksCabChargeBlobStorage'"
 		},
-		"lksCabChargeFileStorage_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'lksCabChargeFileStorage'"
-		},
 		"lksTmrFileStorage_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'lksTmrFileStorage'"
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Azure\\tmrdevstorage"
-		},
-		"lksTmrD365_properties_typeProperties_username": {
-			"type": "string",
-			"defaultValue": "tss_svc@qldtmr.onmicrosoft.com"
 		},
 		"lksTmrFileStorage_properties_typeProperties_host": {
 			"type": "string",
@@ -46,10 +30,6 @@
 		"tmrKeydev_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://tmr-key.vault.azure.net/"
-		},
-		"tmrwebapi_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://tmrcrm-dev.azurewebsites.net"
 		},
 		"containerUri": {
 			"type": "string",
@@ -81,20 +61,11 @@
 					"lksCabChargeBlobStorage_connectionString": {
 						"value": "[parameters('lksCabChargeBlobStorage_connectionString')]"
 					},
-					"lksCabChargeFileStorage_password": {
-						"value": "[parameters('lksCabChargeFileStorage_password')]"
-					},
 					"lksTmrFileStorage_password": {
 						"value": "[parameters('lksTmrFileStorage_password')]"
 					},
 					"azsqlReportingDBconn_connectionString": {
 						"value": "[parameters('azsqlReportingDBconn_connectionString')]"
-					},
-					"lksCabChargeFileStorage_properties_typeProperties_host": {
-						"value": "[parameters('lksCabChargeFileStorage_properties_typeProperties_host')]"
-					},
-					"lksCabChargeFileStorage_properties_typeProperties_userId": {
-						"value": "[parameters('lksCabChargeFileStorage_properties_typeProperties_userId')]"
 					},
 					"lksTmrFileStorage_properties_typeProperties_host": {
 						"value": "[parameters('lksTmrFileStorage_properties_typeProperties_host')]"
@@ -104,12 +75,6 @@
 					},
 					"tmrKeydev_properties_typeProperties_baseUrl": {
 						"value": "[parameters('tmrKeydev_properties_typeProperties_baseUrl')]"
-					},
-					"tmrwebapi_properties_typeProperties_url": {
-						"value": "[parameters('tmrwebapi_properties_typeProperties_url')]"
-					},
-					"lksTmrD365_properties_typeProperties_username": {
-						"value": "[parameters('lksTmrD365_properties_typeProperties_username')]"
 					}
 				}
 			},

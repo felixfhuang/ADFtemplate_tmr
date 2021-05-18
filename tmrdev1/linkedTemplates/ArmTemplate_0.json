@@ -11,10 +11,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lksCabChargeBlobStorage'"
 		},
-		"lksCabChargeFileStorage_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'lksCabChargeFileStorage'"
-		},
 		"lksTmrFileStorage_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'lksTmrFileStorage'"
@@ -22,14 +18,6 @@
 		"azsqlReportingDBconn_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'azsqlReportingDBconn'"
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\tmrdevstorage.file.core.windows.net\\cabcharge"
-		},
-		"lksCabChargeFileStorage_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Azure\\tmrdevstorage"
 		},
 		"lksTmrFileStorage_properties_typeProperties_host": {
 			"type": "string",
@@ -42,14 +30,6 @@
 		"tmrKeydev_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://tmr-key.vault.azure.net/"
-		},
-		"tmrwebapi_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://tmrcrm-dev.azurewebsites.net"
-		},
-		"lksTmrD365_properties_typeProperties_username": {
-			"type": "string",
-			"defaultValue": "tss_svc@qldtmr.onmicrosoft.com"
 		}
 	},
 	"variables": {
@@ -65,24 +45,6 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('lksCabChargeBlobStorage_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/lksCabChargeFileStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFileStorage",
-				"typeProperties": {
-					"host": "[parameters('lksCabChargeFileStorage_properties_typeProperties_host')]",
-					"userId": "[parameters('lksCabChargeFileStorage_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('lksCabChargeFileStorage_password')]"
-					}
 				}
 			},
 			"dependsOn": []
@@ -114,21 +76,6 @@
 				"type": "AzureKeyVault",
 				"typeProperties": {
 					"baseUrl": "[parameters('tmrKeydev_properties_typeProperties_baseUrl')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/tmrwebapi')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('tmrwebapi_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": false,
-					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []
@@ -384,32 +331,6 @@
 						},
 						"secretName": "adfuser",
 						"secretVersion": ""
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/tmrKeydev')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/lksTmrD365')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Dynamics",
-				"typeProperties": {
-					"deploymentType": "Online",
-					"serviceUri": "https://tmrdev1.crm6.dynamics.com",
-					"authenticationType": "Office365",
-					"username": "[parameters('lksTmrD365_properties_typeProperties_username')]",
-					"password": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "tmrKeydev",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "adfd365user"
 					}
 				}
 			},
