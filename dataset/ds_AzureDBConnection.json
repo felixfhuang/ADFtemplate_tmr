@@ -1,5 +1,5 @@
 {
-	"name": "dsFileToProcess",
+	"name": "ds_AzureDBConnection",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "azsqlReportingDBconn",
