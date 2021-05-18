@@ -76,7 +76,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "dsURL",
+						"referenceName": "ds_AzureDBConnection",
 						"type": "DatasetReference"
 					}
 				}
