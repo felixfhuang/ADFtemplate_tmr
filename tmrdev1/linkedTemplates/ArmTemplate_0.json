@@ -321,7 +321,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ExcelFileToBeLoaded')]",
+			"name": "[concat(parameters('factoryName'), '/ds_ExcelFileToBeLoaded')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -577,41 +577,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "A",
-						"type": "varchar"
-					},
-					{
-						"name": "B",
-						"type": "varchar"
-					},
-					{
-						"name": "C",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "template_loadtest"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsFileToProcess')]",
+			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -629,7 +595,25 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
+			"name": "[concat(parameters('factoryName'), '/dsURL')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_AzureDBConnection')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {

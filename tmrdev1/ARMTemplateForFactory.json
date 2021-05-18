@@ -283,7 +283,7 @@
 											"partitionOption": "None"
 										},
 										"dataset": {
-											"referenceName": "dsFileToProcess",
+											"referenceName": "ds_AzureDBConnection",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -452,7 +452,8 @@
 											"type": "BinarySource",
 											"storeSettings": {
 												"type": "AzureBlobStorageReadSettings",
-												"recursive": true
+												"recursive": true,
+												"deleteFilesAfterCompletion": true
 											},
 											"formatSettings": {
 												"type": "BinaryReadSettings"
@@ -468,21 +469,18 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "BinaryDataSource_File",
+											"referenceName": "ds_loadingfolder_file",
 											"type": "DatasetReference",
 											"parameters": {
 												"Container": {
-													"value": "@variables('FileContainer')",
+													"value": "@pipeline().parameters.SourceContainer",
 													"type": "Expression"
 												},
 												"Directory": {
-													"value": "@variables('FileDir')",
+													"value": "@pipeline().parameters.SourceDirectory",
 													"type": "Expression"
 												},
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
+												"filename": "@item().name"
 											}
 										}
 									],
@@ -750,7 +748,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "ExcelFileToBeLoaded",
+											"referenceName": "ds_ExcelFileToBeLoaded",
 											"type": "DatasetReference",
 											"parameters": {
 												"filecontainer": {
@@ -767,7 +765,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "AzureSqlTable1",
+											"referenceName": "ds_sink_LoadTestTable",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -1026,12 +1024,11 @@
 				"[concat(variables('factoryId'), '/datasets/ds_loadingfolder_folder')]",
 				"[concat(variables('factoryId'), '/datasets/ds_source_fileshare')]",
 				"[concat(variables('factoryId'), '/pipelines/PL Send Email Notification')]",
-				"[concat(variables('factoryId'), '/datasets/dsFileToProcess')]",
+				"[concat(variables('factoryId'), '/datasets/ds_AzureDBConnection')]",
 				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]",
-				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File')]",
 				"[concat(variables('factoryId'), '/datasets/ds_loadingfolder_file')]",
-				"[concat(variables('factoryId'), '/datasets/ExcelFileToBeLoaded')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
+				"[concat(variables('factoryId'), '/datasets/ds_ExcelFileToBeLoaded')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sink_LoadTestTable')]"
 			]
 		},
 		{
@@ -1140,7 +1137,7 @@
 											"partitionOption": "None"
 										},
 										"dataset": {
-											"referenceName": "dsFileToProcess",
+											"referenceName": "ds_AzureDBConnection",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -1630,7 +1627,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "AzureSqlTable1",
+											"referenceName": "ds_sink_LoadTestTable",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -1891,45 +1888,11 @@
 				"[concat(variables('factoryId'), '/datasets/ds_source_fileshare')]",
 				"[concat(variables('factoryId'), '/datasets/ds_loadingfolder_file')]",
 				"[concat(variables('factoryId'), '/pipelines/PL Send Email Notification')]",
-				"[concat(variables('factoryId'), '/datasets/dsFileToProcess')]",
+				"[concat(variables('factoryId'), '/datasets/ds_AzureDBConnection')]",
 				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]",
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File')]",
 				"[concat(variables('factoryId'), '/datasets/loadtestfile')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "A",
-						"type": "varchar"
-					},
-					{
-						"name": "B",
-						"type": "varchar"
-					},
-					{
-						"name": "C",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "template_loadtest"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
+				"[concat(variables('factoryId'), '/datasets/ds_sink_LoadTestTable')]"
 			]
 		},
 		{
@@ -2092,7 +2055,61 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ExcelFileToBeLoaded')]",
+			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dsURL')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_AzureDBConnection')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_ExcelFileToBeLoaded')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -2136,60 +2153,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeBlobStorage')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsFileToProcess')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsURL')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
 			]
 		},
 		{
@@ -2269,6 +2232,40 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeBlobStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sink_LoadTestTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "A",
+						"type": "varchar"
+					},
+					{
+						"name": "B",
+						"type": "varchar"
+					},
+					{
+						"name": "C",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "template_loadtest"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
 			]
 		},
 		{
