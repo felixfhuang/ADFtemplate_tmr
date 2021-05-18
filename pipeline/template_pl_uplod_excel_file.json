@@ -270,7 +270,8 @@
 									"type": "BinarySource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": true
+										"recursive": true,
+										"deleteFilesAfterCompletion": true
 									},
 									"formatSettings": {
 										"type": "BinaryReadSettings"
