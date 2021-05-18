@@ -136,7 +136,7 @@
 								"partitionOption": "None"
 							},
 							"dataset": {
-								"referenceName": "dsURL",
+								"referenceName": "ds_AzureDBConnection",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -174,7 +174,7 @@
 				"lastPublishTime": "2021-05-17T04:49:43Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/dsURL')]"
+				"[concat(variables('factoryId'), '/datasets/ds_AzureDBConnection')]"
 			]
 		},
 		{
@@ -2052,42 +2052,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeFileStorage')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsURL')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
 			]
 		},
 		{
