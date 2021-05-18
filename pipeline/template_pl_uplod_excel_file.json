@@ -706,6 +706,40 @@
 									"value": "@equals(variables('v_IsValid'), '1')",
 									"type": "Expression"
 								},
+								"ifFalseActivities": [
+									{
+										"name": "PL Send Email Notification 123_copy1",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "PL Send Email Notification",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"EmailTo": {
+													"value": "@pipeline().parameters.NotificationEmails",
+													"type": "Expression"
+												},
+												"Activity": "Prepare Trip data",
+												"ErrorMessage": {
+													"value": "@concat('Error in processing the file ', item().name )",
+													"type": "Expression"
+												},
+												"PipelineName": {
+													"value": "@pipeline().Pipeline",
+													"type": "Expression"
+												},
+												"Subject": {
+													"value": "returning 0, send email",
+													"type": "Expression"
+												}
+											}
+										}
+									}
+								],
 								"ifTrueActivities": [
 									{
 										"name": "PL Send Email Notification 123",
