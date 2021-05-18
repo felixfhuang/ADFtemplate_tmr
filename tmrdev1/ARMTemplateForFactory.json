@@ -941,7 +941,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "ds_loadingfolder_file",
+								"referenceName": "ds_loadingfolder_folder",
 								"type": "DatasetReference",
 								"parameters": {
 									"Container": {
@@ -951,8 +951,7 @@
 									"Directory": {
 										"value": "@pipeline().parameters.SourceDirectory",
 										"type": "Expression"
-									},
-									"filename": "test.xml"
+									}
 								}
 							}
 						]
@@ -1026,11 +1025,11 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_loadingfolder_folder')]",
 				"[concat(variables('factoryId'), '/datasets/ds_source_fileshare')]",
-				"[concat(variables('factoryId'), '/datasets/ds_loadingfolder_file')]",
 				"[concat(variables('factoryId'), '/pipelines/PL Send Email Notification')]",
 				"[concat(variables('factoryId'), '/datasets/dsFileToProcess')]",
 				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]",
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File')]",
+				"[concat(variables('factoryId'), '/datasets/ds_loadingfolder_file')]",
 				"[concat(variables('factoryId'), '/datasets/ExcelFileToBeLoaded')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
 			]

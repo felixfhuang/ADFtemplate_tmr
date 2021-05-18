@@ -913,7 +913,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "ds_loadingfolder_file",
+								"referenceName": "ds_loadingfolder_folder",
 								"type": "DatasetReference",
 								"parameters": {
 									"Container": {
@@ -923,8 +923,7 @@
 									"Directory": {
 										"value": "@pipeline().parameters.SourceDirectory",
 										"type": "Expression"
-									},
-									"filename": "test.xml"
+									}
 								}
 							}
 						]
