@@ -8,6 +8,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
+			"sheetName": "tss_trip_data_test",
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "tss_trip_data_test_excel.xlsx",
