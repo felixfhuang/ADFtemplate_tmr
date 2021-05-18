@@ -752,7 +752,17 @@
 										{
 											"referenceName": "ExcelFileToBeLoaded",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"filecontainer": {
+													"value": "@variables('FileContainer')",
+													"type": "Expression"
+												},
+												"filedirectory": {
+													"value": "@variables('FileDir')",
+													"type": "Expression"
+												},
+												"filename": "@item().name"
+											}
 										}
 									],
 									"outputs": [
@@ -2201,15 +2211,35 @@
 					"referenceName": "lksCabChargeBlobStorage",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"filecontainer": {
+						"type": "string"
+					},
+					"filedirectory": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "Excel",
 				"typeProperties": {
 					"sheetName": "tss_trip_data_test",
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "tss_trip_data_test_excel.xlsx",
-						"folderPath": "cardupdate",
-						"container": "cabcharge"
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().filedirectory",
+							"type": "Expression"
+						},
+						"container": {
+							"value": "@dataset().filecontainer",
+							"type": "Expression"
+						}
 					},
 					"firstRowAsHeader": true
 				},
