@@ -1,5 +1,5 @@
 {
-	"name": "BinaryDataSource_Folder",
+	"name": "ds_loadingfolder_folder",
 	"properties": {
 		"description": "It describes the folder in the data source store.",
 		"linkedServiceName": {

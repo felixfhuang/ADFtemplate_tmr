@@ -1,5 +1,5 @@
 {
-	"name": "ds_loadingfolder",
+	"name": "ds_loadingfolder_file",
 	"properties": {
 		"description": "It describes the destination store.",
 		"linkedServiceName": {
