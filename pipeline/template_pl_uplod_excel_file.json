@@ -729,7 +729,7 @@
 						"storeSettings": {
 							"type": "AzureFileStorageReadSettings",
 							"recursive": false,
-							"wildcardFileName": "*.txt",
+							"wildcardFileName": "*.xlsx",
 							"deleteFilesAfterCompletion": false
 						},
 						"formatSettings": {
