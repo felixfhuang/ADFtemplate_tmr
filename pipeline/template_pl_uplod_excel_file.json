@@ -583,7 +583,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_sink_LoadTestTable",
+									"referenceName": "ds_LoadTestTable",
 									"type": "DatasetReference"
 								}
 							]

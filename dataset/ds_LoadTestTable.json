@@ -1,5 +1,5 @@
 {
-	"name": "ds_sink_LoadTestTable",
+	"name": "ds_LoadTestTable",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "azsqlReportingDBconn",
