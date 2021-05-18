@@ -1,0 +1,21 @@
+{
+	"name": "ExcelFileToBeLoaded",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lksCabChargeBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tss_trip_data_test_excel.xlsx",
+				"folderPath": "cardupdate",
+				"container": "cabcharge"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}

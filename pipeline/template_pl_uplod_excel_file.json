@@ -544,14 +544,11 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "DelimitedTextSource",
+									"type": "ExcelSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
 										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
 									}
 								},
 								"sink": {
@@ -571,22 +568,8 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "loadtestfile",
-									"type": "DatasetReference",
-									"parameters": {
-										"filecontainer": {
-											"value": "@variables('FileContainer')",
-											"type": "Expression"
-										},
-										"filedir": {
-											"value": "@variables('FileDir')",
-											"type": "Expression"
-										},
-										"filename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "ExcelFileToBeLoaded",
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
