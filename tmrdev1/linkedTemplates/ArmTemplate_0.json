@@ -357,7 +357,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sink_LoadTestTable')]",
+			"name": "[concat(parameters('factoryName'), '/ds_LoadTestTable')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1099,7 +1099,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "ds_sink_LoadTestTable",
+											"referenceName": "ds_LoadTestTable",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -1362,7 +1362,7 @@
 				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]",
 				"[concat(variables('factoryId'), '/datasets/ds_loadingfolder_file')]",
 				"[concat(variables('factoryId'), '/datasets/ds_ExcelFileToBeLoaded')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sink_LoadTestTable')]"
+				"[concat(variables('factoryId'), '/datasets/ds_LoadTestTable')]"
 			]
 		},
 		{
@@ -1958,7 +1958,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "ds_sink_LoadTestTable",
+											"referenceName": "ds_LoadTestTable",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -2222,7 +2222,7 @@
 				"[concat(variables('factoryId'), '/datasets/ds_AzureDBConnection')]",
 				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]",
 				"[concat(variables('factoryId'), '/datasets/ds_TabFileToBeLoaded')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sink_LoadTestTable')]"
+				"[concat(variables('factoryId'), '/datasets/ds_LoadTestTable')]"
 			]
 		}
 	]
