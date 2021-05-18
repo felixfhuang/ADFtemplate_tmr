@@ -286,21 +286,18 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "BinaryDataSource_File",
+									"referenceName": "ds_loadingfolder_file",
 									"type": "DatasetReference",
 									"parameters": {
 										"Container": {
-											"value": "@variables('FileContainer')",
+											"value": "@pipeline().parameters.SourceContainer",
 											"type": "Expression"
 										},
 										"Directory": {
-											"value": "@variables('FileDir')",
+											"value": "@pipeline().parameters.SourceDirectory",
 											"type": "Expression"
 										},
-										"filename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
+										"filename": "@item().name"
 									}
 								}
 							],
@@ -571,7 +568,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "loadtestfile",
+									"referenceName": "ds_TabFileToBeLoaded",
 									"type": "DatasetReference",
 									"parameters": {
 										"filecontainer": {

@@ -1,5 +1,5 @@
 {
-	"name": "loadtestfile",
+	"name": "ds_TabFileToBeLoaded",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "lksCabChargeBlobStorage",
