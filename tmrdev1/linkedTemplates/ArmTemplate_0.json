@@ -431,6 +431,33 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ExcelFileToBeLoaded')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "lksCabChargeBlobStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "tss_trip_data_test",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "tss_trip_data_test_excel.xlsx",
+						"folderPath": "cardupdate",
+						"container": "cabcharge"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/lksCabChargeBlobStorage')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/loadtestfile')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -583,24 +610,6 @@
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/dsPageList')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "azsqlReportingDBconn",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/azsqlReportingDBconn')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dsURL')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {

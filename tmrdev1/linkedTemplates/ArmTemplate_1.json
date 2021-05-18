@@ -13,6 +13,22 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/dsURL')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azsqlReportingDBconn",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/PL Send Email Notification')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -129,7 +145,9 @@
 				"annotations": [],
 				"lastPublishTime": "2021-05-17T04:49:43Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/dsURL')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/template_pl_uplod_excel_file')]",
@@ -680,14 +698,11 @@
 									"userProperties": [],
 									"typeProperties": {
 										"source": {
-											"type": "DelimitedTextSource",
+											"type": "ExcelSource",
 											"storeSettings": {
 												"type": "AzureBlobStorageReadSettings",
 												"recursive": true,
 												"enablePartitionDiscovery": false
-											},
-											"formatSettings": {
-												"type": "DelimitedTextReadSettings"
 											}
 										},
 										"sink": {
@@ -707,22 +722,9 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "loadtestfile",
+											"referenceName": "ExcelFileToBeLoaded",
 											"type": "DatasetReference",
-											"parameters": {
-												"filecontainer": {
-													"value": "@variables('FileContainer')",
-													"type": "Expression"
-												},
-												"filedir": {
-													"value": "@variables('FileDir')",
-													"type": "Expression"
-												},
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
+											"parameters": {}
 										}
 									],
 									"outputs": [
