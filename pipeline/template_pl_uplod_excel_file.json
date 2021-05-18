@@ -569,7 +569,18 @@
 							"inputs": [
 								{
 									"referenceName": "ExcelFileToBeLoaded",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"filecontainer": {
+											"value": "@variables('FileContainer')",
+											"type": "Expression"
+										},
+										"filedirectory": {
+											"value": "@variables('FileDir')",
+											"type": "Expression"
+										},
+										"filename": "@item().name"
+									}
 								}
 							],
 							"outputs": [
